@@ -1,0 +1,719 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 20%, #6a00ff55, transparent 30%),
+        radial-gradient(circle at 80% 30%, #00d9ff44, transparent 30%),
+        radial-gradient(circle at 50% 100%, #ff00cc33, transparent 35%),
+        #050509;
+
+    color: white;
+    overflow-x: hidden;
+}
+
+/* الإضاءة الخلفية */
+
+body::before {
+    content: "";
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    background: #7b00ff;
+
+    filter: blur(180px);
+    opacity: 0.18;
+
+    top: -150px;
+    left: -150px;
+
+    z-index: -1;
+
+    animation: glow 6s infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    background: #00d9ff;
+
+    filter: blur(180px);
+    opacity: 0.13;
+
+    bottom: -150px;
+    right: -150px;
+
+    z-index: -1;
+
+    animation: glow 7s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.35);
+    }
+}
+
+/* الحاوية */
+
+.container {
+    width: 92%;
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 60px 0;
+}
+
+/* البروفايل */
+
+.profile {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 4px solid white;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px #7b00ff,
+        0 0 70px #00d9ff;
+
+    animation: profileGlow 3s infinite alternate;
+}
+
+@keyframes profileGlow {
+    from {
+        box-shadow:
+            0 0 15px white,
+            0 0 35px #7b00ff;
+    }
+
+    to {
+        box-shadow:
+            0 0 25px white,
+            0 0 60px #00d9ff,
+            0 0 100px #7b00ff;
+    }
+}
+
+/* اسم اليوتيوبر */
+
+.name {
+    margin-top: 20px;
+
+    font-size: 42px;
+    font-weight: 900;
+
+    background: linear-gradient(
+        90deg,
+        white,
+        #00d9ff,
+        #a855ff,
+        white
+    );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: textMove 5s linear infinite;
+}
+
+@keyframes textMove {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+.bio {
+    margin-top: 10px;
+
+    color: #bbb;
+
+    font-size: 16px;
+}
+
+/* اللينكات */
+
+.links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.link {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 18px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(15px);
+
+    transition: 0.3s;
+
+    overflow: hidden;
+}
+
+/* اللمعة اللي بتعدي على الزر */
+
+.link::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    left: -100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+
+    transition: 0.5s;
+}
+
+.link:hover::before {
+    left: 100%;
+}
+
+/* حركة الزر */
+
+.link:hover {
+    transform: translateY(-5px) scale(1.02);
+
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 15px #00d9ff55,
+        0 0 40px #7b00ff33;
+}
+
+/* الأيقونة */
+
+.icon {
+    position: absolute;
+
+    right: 20px;
+
+    font-size: 24px;
+}
+
+/* قسم Minecraft */
+
+.minecraft {
+    margin-top: 45px;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background: rgba(20, 255, 100, 0.05);
+
+    border: 1px solid rgba(50, 255, 120, 0.3);
+
+    box-shadow:
+        0 0 25px rgba(0, 255, 100, 0.08);
+
+    text-align: center;
+}
+
+.minecraft h2 {
+    font-size: 28px;
+
+    margin-bottom: 10px;
+
+    color: #5cff7a;
+
+    text-shadow:
+        0 0 10px #00ff55,
+        0 0 25px #00ff55;
+}
+
+.minecraft p {
+    color: #aaa;
+
+    margin-bottom: 20px;
+}
+
+/* بيانات السيرفر */
+
+.server-box {
+    display: flex;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.server-info {
+    background: #090d0a;
+
+    border: 1px solid #27ff62;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 15px #00ff5522;
+}
+
+.server-info span {
+    color: #55ff7a;
+
+    font-weight: bold;
+}
+
+/* زر النسخ */
+
+.copy-btn {
+    border: none;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #00ff66,
+        #00aa44
+    );
+
+    color: #001b08;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 15px #00ff66,
+        0 0 35px #00ff6655;
+}
+
+/* الفوتر */
+
+footer {
+    text-align: center;
+
+    margin-top: 45px;
+
+    color: #666;
+
+    font-size: 13px;
+}
+
+/* الموبايل */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 40px 0;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .name {
+        font-size: 32px;
+    }
+
+    .link {
+        font-size: 16px;
+    }
+}
+/* ================================= */
+/* شاشة الترحيب */
+/* ================================= */
+
+.welcome-screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #7b00ff33,
+            transparent 40%
+        ),
+        #050509;
+
+    z-index: 9999;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+
+/* صندوق الترحيب */
+
+.welcome-box {
+    width: 90%;
+    max-width: 700px;
+
+    text-align: center;
+
+    padding: 50px 25px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 0 30px #7b00ff55,
+        0 0 80px #00d9ff22;
+
+    animation: welcomeFloat 3s infinite alternate;
+}
+
+
+@keyframes welcomeFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+
+}
+
+
+/* الخط */
+
+.welcome-line {
+
+    width: 100px;
+    height: 4px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #7b00ff,
+        #00d9ff,
+        #7b00ff
+    );
+
+    box-shadow:
+        0 0 15px #00d9ff,
+        0 0 30px #7b00ff;
+}
+
+
+/* العنوان */
+
+.welcome-title {
+
+    font-size: 30px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #7b00ff;
+
+    margin-bottom: 15px;
+}
+
+
+/* ARLI GAMES */
+
+.welcome-logo {
+
+    font-size: 55px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #00d9ff,
+        #a855ff,
+        #ffffff
+    );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: textMove 4s linear infinite;
+
+    text-shadow: none;
+}
+
+
+/* النص */
+
+.welcome-text {
+
+    color: #aaa;
+
+    margin-top: 15px;
+
+    font-size: 17px;
+}
+
+
+/* زر الدخول */
+
+.enter-btn {
+
+    margin-top: 30px;
+
+    padding: 16px 45px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #7b00ff,
+        #00aaff
+    );
+
+    box-shadow:
+        0 0 15px #7b00ff,
+        0 0 35px #00d9ff55;
+
+    transition: 0.3s;
+}
+
+
+.enter-btn:hover {
+
+    transform:
+        scale(1.08)
+        translateY(-3px);
+
+    box-shadow:
+        0 0 20px #ffffff,
+        0 0 40px #7b00ff,
+        0 0 70px #00d9ff;
+}
+
+
+/* ================================= */
+/* إخفاء شاشة الترحيب */
+/* ================================= */
+
+.welcome-screen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* ================================= */
+/* الموقع الرئيسي */
+/* ================================= */
+
+.main-site {
+
+    opacity: 0;
+
+    transition: opacity 1s ease;
+
+    min-height: 100vh;
+}
+
+
+.main-site.show {
+
+    opacity: 1;
+}
+
+
+/* ================================= */
+/* معلومات صاحب ومصمم الموقع */
+/* ================================= */
+
+.site-info {
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    text-align: right;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(10px);
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    box-shadow:
+        0 0 15px #7b00ff22;
+}
+
+
+.site-info strong {
+
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 8px #00d9ff;
+}
+
+
+/* ================================= */
+/* تعديل مساحة الصفحة */
+/* ================================= */
+
+.main-site .container {
+
+    padding-top: 100px;
+}
+
+
+/* ================================= */
+/* الموبايل */
+/* ================================= */
+
+@media (max-width: 600px) {
+
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    .welcome-logo {
+        font-size: 38px;
+    }
+
+    .welcome-text {
+        font-size: 14px;
+    }
+
+    .enter-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+
+    .site-info {
+
+        top: 10px;
+        right: 10px;
+
+        font-size: 11px;
+
+        padding: 8px 12px;
+    }
+
+    .main-site .container {
+        padding-top: 110px;
+    }
+
+}
+/* حجم صور السوشيال */
+.link-icon {
+    position: absolute;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
