@@ -1,1220 +1,999 @@
 /* =========================================
-   ARLI GAMES
-   PREMIUM GAMING WEBSITE
-   ========================================= */
+ARLI GAMES — ULTRA PREMIUM DESIGN
+========================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Orbitron:wght@400;600;700;800;900&display=swap');
+
+:root {
+--purple: #8b2cff;
+--purple-light: #b15cff;
+--blue: #00d9ff;
+--dark: #030308;
+--card: rgba(255, 255, 255, 0.055);
+--border: rgba(255, 255, 255, 0.12);
+--text-muted: #8d91a3;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    font-family: Arial, sans-serif;
-
-    color: white;
-
-    background:
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(123, 0, 255, 0.25),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(0, 217, 255, 0.18),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(255, 0, 204, 0.12),
-            transparent 35%
-        ),
-        #030306;
+min-height: 100vh;
+overflow-x: hidden;
+font-family: "Cairo", Arial, sans-serif;
+color: white;
+background:
+radial-gradient(circle at 10% 10%, rgba(123, 0, 255, 0.20), transparent 30%),
+radial-gradient(circle at 90% 25%, rgba(0, 217, 255, 0.13), transparent 30%),
+radial-gradient(circle at 50% 100%, rgba(123, 0, 255, 0.12), transparent 35%),
+#030308;
 }
 
-
 /* =========================================
-   PARTICLES
-   ========================================= */
-
-#particles {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-
-/* =========================================
-   MOUSE GLOW
-   ========================================= */
-
-.mouse-glow {
-    position: fixed;
-
-    width: 350px;
-    height: 350px;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(123, 0, 255, 0.12),
-            transparent 70%
-        );
-
-    transform: translate(-50%, -50%);
-
-    z-index: 1;
-}
-
-
-/* =========================================
-   GRID
-   ========================================= */
+BACKGROUND
+========================================= */
 
 body::before {
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 55px 55px;
-
-    z-index: 0;
-
-    animation: gridMove 15s linear infinite;
+content: "";
+position: fixed;
+inset: 0;
+pointer-events: none;
+background:
+linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+background-size: 55px 55px;
+mask-image: linear-gradient(to bottom, black, transparent);
+z-index: 0;
 }
 
-@keyframes gridMove {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(55px);
-    }
+body::after {
+content: "";
+position: fixed;
+width: 600px;
+height: 600px;
+left: -300px;
+bottom: -300px;
+border-radius: 50%;
+background: rgba(123, 0, 255, 0.08);
+filter: blur(100px);
+pointer-events: none;
+z-index: 0;
 }
-
 
 /* =========================================
-   WELCOME SCREEN
-   ========================================= */
+PARTICLES
+========================================= */
+
+#particles {
+position: fixed;
+inset: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 0;
+}
+
+/* =========================================
+MOUSE GLOW
+========================================= */
+
+.mouse-glow {
+position: fixed;
+width: 450px;
+height: 450px;
+border-radius: 50%;
+pointer-events: none;
+transform: translate(-50%, -50%);
+background: radial-gradient(
+circle,
+rgba(123, 0, 255, 0.12) 0%,
+rgba(0, 217, 255, 0.035) 35%,
+transparent 70%
+);
+filter: blur(5px);
+z-index: 1;
+}
+
+/* =========================================
+WELCOME SCREEN
+========================================= */
 
 .welcome-screen {
-    position: fixed;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(123,0,255,0.35),
-            transparent 40%
-        ),
-        #030306;
-
-    z-index: 9999;
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+position: fixed;
+inset: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+background:
+radial-gradient(circle at center, rgba(123, 0, 255, 0.22), transparent 45%),
+rgba(3, 3, 8, 0.92);
+backdrop-filter: blur(10px);
+z-index: 9999;
+transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .welcome-screen.hide {
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
 }
 
-
 /* =========================================
-   WELCOME BOX
-   ========================================= */
+WELCOME BOX
+========================================= */
 
 .welcome-box {
-    position: relative;
+position: relative;
+width: min(90%, 720px);
+padding: 70px 35px;
+text-align: center;
+border-radius: 32px;
+overflow: hidden;
 
-    width: 90%;
+```
+background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.09),
+        rgba(255,255,255,0.025)
+    );
 
-    max-width: 750px;
+border: 1px solid rgba(255,255,255,0.14);
 
-    padding: 65px 30px;
+backdrop-filter: blur(25px);
 
-    text-align: center;
+box-shadow:
+    0 25px 80px rgba(0,0,0,0.55),
+    0 0 50px rgba(123,0,255,0.15);
 
-    border-radius: 30px;
+animation: welcomeAppear 1s cubic-bezier(.2,.8,.2,1);
+```
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.09),
-            rgba(255,255,255,0.025)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.18);
-
-    backdrop-filter: blur(25px);
-
-    box-shadow:
-        0 0 35px rgba(123,0,255,0.25),
-        0 0 100px rgba(0,217,255,0.08);
-
-    overflow: hidden;
-
-    animation:
-        welcomeAppear 1s ease,
-        floating 4s ease-in-out infinite alternate;
 }
 
 .welcome-box::before {
-    content: "";
+content: "";
+position: absolute;
+inset: 0;
+padding: 1px;
+border-radius: inherit;
+background: linear-gradient(
+120deg,
+transparent 20%,
+rgba(0,217,255,0.7),
+rgba(168,85,255,0.8),
+transparent 80%
+);
+background-size: 300% 100%;
+animation: borderMove 5s linear infinite;
+pointer-events: none;
+}
 
-    position: absolute;
-
-    inset: -2px;
-
-    border-radius: 32px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #7b00ff,
-            #00d9ff,
-            #7b00ff,
-            transparent
-        );
-
-    background-size: 300% 100%;
-
-    opacity: 0.35;
-
-    z-index: -1;
-
-    animation: borderMove 5s linear infinite;
+.welcome-box::after {
+content: "ARLI";
+position: absolute;
+font-family: Orbitron;
+font-size: 180px;
+font-weight: 900;
+opacity: 0.025;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
 }
 
 @keyframes welcomeAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.75)
-            translateY(30px);
-
-        filter: blur(12px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-
-        filter: blur(0);
-    }
+from {
+opacity: 0;
+transform: scale(.88) translateY(30px);
+filter: blur(12px);
 }
-
-@keyframes floating {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-10px);
-    }
+to {
+opacity: 1;
+transform: scale(1) translateY(0);
+filter: blur(0);
+}
 }
 
 @keyframes borderMove {
-
-    from {
-        background-position: 0%;
-    }
-
-    to {
-        background-position: 300%;
-    }
+from { background-position: 0% 0%; }
+to { background-position: 300% 0%; }
 }
 
-
 /* =========================================
-   WELCOME CONTENT
-   ========================================= */
+WELCOME CONTENT
+========================================= */
 
 .welcome-line {
-    width: 100px;
-
-    height: 4px;
-
-    margin: 0 auto 25px;
-
-    border-radius: 50px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7b00ff,
-            #00d9ff,
-            #7b00ff
-        );
-
-    box-shadow:
-        0 0 15px #7b00ff,
-        0 0 35px #00d9ff;
-
-    animation:
-        linePulse 2s ease-in-out infinite alternate;
+width: 85px;
+height: 3px;
+margin: 0 auto 25px;
+border-radius: 50px;
+background: linear-gradient(90deg, var(--purple), var(--blue));
+box-shadow: 0 0 15px var(--purple), 0 0 25px var(--blue);
+animation: linePulse 2s ease-in-out infinite alternate;
 }
 
 @keyframes linePulse {
-
-    from {
-        width: 80px;
-    }
-
-    to {
-        width: 150px;
-    }
+to {
+width: 145px;
+opacity: .8;
+}
 }
 
 .welcome-small {
-    color: #777;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 10px;
+color: var(--blue);
+font-family: Orbitron, Arial;
+font-size: 10px;
+letter-spacing: 5px;
+margin-bottom: 14px;
+opacity: .8;
 }
 
 .welcome-title {
-    color: #aaa;
-
-    font-size: 26px;
+color: #b6b6c3;
+font-size: clamp(19px, 3vw, 28px);
+font-weight: 600;
 }
 
 .welcome-logo {
-    margin-top: 5px;
+margin-top: 8px;
+font-family: Orbitron, Arial;
+font-size: clamp(42px, 9vw, 80px);
+font-weight: 900;
+letter-spacing: 5px;
 
-    font-size:
-        clamp(
-            45px,
-            10vw,
-            82px
-        );
+```
+background: linear-gradient(
+    90deg,
+    #fff,
+    var(--blue),
+    var(--purple-light),
+    #fff
+);
 
-    font-weight: 900;
+background-size: 300%;
+color: transparent;
+-webkit-background-clip: text;
+background-clip: text;
 
-    letter-spacing: 5px;
+animation: logoMove 5s linear infinite;
+filter: drop-shadow(0 0 20px rgba(123,0,255,.25));
+```
 
-    background:
-        linear-gradient(
-            90deg,
-            white,
-            #00d9ff,
-            #a855ff,
-            white
-        );
-
-    background-size: 300%;
-
-    color: transparent;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    animation:
-        logoMove 4s linear infinite,
-        logoGlow 2s ease-in-out infinite alternate;
 }
 
 @keyframes logoMove {
-
-    from {
-        background-position: 0%;
-    }
-
-    to {
-        background-position: 300%;
-    }
-}
-
-@keyframes logoGlow {
-
-    from {
-        filter:
-            drop-shadow(
-                0 0 5px rgba(0,217,255,0.2)
-            );
-    }
-
-    to {
-        filter:
-            drop-shadow(
-                0 0 25px rgba(123,0,255,0.7)
-            );
-    }
+to { background-position: 300% 0; }
 }
 
 .welcome-text {
-    margin-top: 15px;
-
-    color: #999;
-
-    font-size: 16px;
+margin-top: 15px;
+color: var(--text-muted);
+font-size: 16px;
 }
 
-
 /* =========================================
-   ENTER BUTTON
-   ========================================= */
+ENTER BUTTON
+========================================= */
 
 .enter-btn {
-    position: relative;
+position: relative;
+margin-top: 32px;
+padding: 16px 48px;
+border: 1px solid rgba(255,255,255,.16);
+border-radius: 14px;
+color: white;
+font-family: "Cairo";
+font-size: 16px;
+font-weight: 700;
+cursor: pointer;
+overflow: hidden;
 
-    margin-top: 30px;
+```
+background: linear-gradient(
+    135deg,
+    var(--purple),
+    #315cff,
+    var(--blue)
+);
 
-    padding: 16px 45px;
+background-size: 200%;
 
-    border: none;
+box-shadow:
+    0 10px 30px rgba(123,0,255,.35),
+    inset 0 1px rgba(255,255,255,.2);
 
-    border-radius: 14px;
+transition: .35s ease;
+```
 
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7b00ff,
-            #006eff
-        );
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 0 20px rgba(123,0,255,0.6),
-        0 0 50px rgba(0,217,255,0.15);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
 }
 
 .enter-btn::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    width: 70%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.45),
-            transparent
-        );
-
-    transform: skewX(-25deg);
-
-    transition: 0.7s;
+content: "";
+position: absolute;
+top: -50%;
+left: -100%;
+width: 50%;
+height: 200%;
+transform: rotate(25deg);
+background: rgba(255,255,255,.25);
+transition: .7s;
 }
 
 .enter-btn:hover::before {
-    left: 140%;
+left: 150%;
 }
 
 .enter-btn:hover {
-    transform:
-        translateY(-5px)
-        scale(1.05);
-
-    box-shadow:
-        0 0 30px #7b00ff,
-        0 0 70px rgba(0,217,255,0.4);
+transform: translateY(-5px) scale(1.03);
+background-position: right;
+box-shadow:
+0 15px 40px rgba(123,0,255,.5),
+0 0 30px rgba(0,217,255,.15);
 }
 
 .enter-btn:active {
-    transform: scale(0.95);
+transform: scale(.96);
 }
 
-
 /* =========================================
-   MAIN SITE
-   ========================================= */
+MAIN SITE
+========================================= */
 
 .main-site {
-    position: relative;
-
-    z-index: 2;
-
-    min-height: 100vh;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: translateY(25px);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        visibility 0s linear 0.8s;
+position: relative;
+z-index: 2;
+min-height: 100vh;
+opacity: 0;
+visibility: hidden;
+transform: translateY(20px);
+transition:
+opacity .8s ease,
+transform .8s ease,
+visibility 0s linear .8s;
 }
 
 .main-site.show {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: translateY(0);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        visibility 0s;
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+transition:
+opacity .8s ease,
+transform .8s ease;
 }
 
-
 /* =========================================
-   CONTAINER
-   ========================================= */
+CONTAINER
+========================================= */
 
 .container {
-    width: 92%;
-
-    max-width: 820px;
-
-    margin: auto;
-
-    padding:
-        100px 0 50px;
+position: relative;
+width: min(92%, 820px);
+margin: auto;
+padding: 110px 0 55px;
 }
 
-
 /* =========================================
-   SITE INFO
-   ========================================= */
+SITE INFO
+========================================= */
 
 .site-info {
-    position: absolute;
+position: fixed;
+top: 18px;
+right: 20px;
+display: flex;
+gap: 8px;
+z-index: 20;
+}
 
-    top: 15px;
-    right: 20px;
+.site-info > div {
+padding: 9px 14px;
+border-radius: 12px;
+font-size: 10px;
+color: #a1a1ad;
 
-    padding: 11px 15px;
+```
+background: rgba(10,10,18,.65);
+border: 1px solid rgba(255,255,255,.1);
+backdrop-filter: blur(15px);
 
-    border-radius: 14px;
+transition: .3s;
+```
 
-    background:
-        rgba(255,255,255,0.05);
+}
 
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(15px);
-
-    color: #888;
-
-    font-size: 11px;
-
-    line-height: 1.8;
-
-    z-index: 5;
+.site-info > div:hover {
+border-color: rgba(0,217,255,.4);
+transform: translateY(2px);
 }
 
 .site-info strong {
-    color: #00d9ff;
-
-    text-shadow:
-        0 0 8px #00d9ff;
+color: var(--blue);
 }
 
-
 /* =========================================
-   PROFILE
-   ========================================= */
+PROFILE
+========================================= */
 
 .profile {
-    text-align: center;
-
-    margin-bottom: 55px;
+position: relative;
+text-align: center;
+margin-bottom: 60px;
 }
 
 .profile-ring {
-    position: relative;
+position: relative;
+display: inline-flex;
+padding: 5px;
+border-radius: 50%;
 
-    display: inline-flex;
+```
+background: conic-gradient(
+    var(--purple),
+    var(--blue),
+    var(--purple-light),
+    var(--purple)
+);
 
-    padding: 5px;
+box-shadow:
+    0 0 25px rgba(123,0,255,.5),
+    0 0 80px rgba(0,217,255,.1);
 
-    border-radius: 50%;
+animation: ringRotate 6s linear infinite;
+```
 
-    background:
-        conic-gradient(
-            #7b00ff,
-            #00d9ff,
-            #a855ff,
-            #7b00ff
-        );
+}
 
-    box-shadow:
-        0 0 25px rgba(123,0,255,0.7),
-        0 0 60px rgba(0,217,255,0.2);
-
-    animation:
-        ringRotate 4s linear infinite;
+.profile-ring::before {
+content: "";
+position: absolute;
+inset: -8px;
+border-radius: 50%;
+border: 1px solid rgba(0,217,255,.12);
 }
 
 .profile-img {
-    display: block;
-
-    width: 155px;
-    height: 155px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    border:
-        5px solid #030306;
+display: block;
+width: 165px;
+height: 165px;
+object-fit: cover;
+border-radius: 50%;
+border: 5px solid var(--dark);
 }
 
 @keyframes ringRotate {
-
-    to {
-        transform: rotate(360deg);
-    }
+to { transform: rotate(360deg); }
 }
 
-
-/* =========================================
-   ONLINE
-   ========================================= */
-
 .online-status {
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 7px;
-
-    margin-top: 18px;
-
-    color: #65ff9b;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+margin-top: 20px;
+color: #69ffa2;
+font-family: Orbitron;
+font-size: 10px;
+letter-spacing: 3px;
 }
 
 .online-status span {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #65ff9b;
-
-    box-shadow:
-        0 0 12px #65ff9b;
-
-    animation:
-        onlinePulse 1.5s infinite;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: #69ffa2;
+box-shadow: 0 0 12px #69ffa2;
+animation: onlinePulse 1.5s infinite;
 }
 
 @keyframes onlinePulse {
-
-    50% {
-        opacity: 0.3;
-    }
+50% {
+opacity: .3;
+transform: scale(.7);
+}
 }
 
-
-/* =========================================
-   NAME
-   ========================================= */
-
 .name {
-    margin-top: 12px;
+margin-top: 14px;
+font-family: Orbitron;
+font-size: clamp(28px, 6vw, 48px);
+letter-spacing: 2px;
+font-weight: 900;
 
-    font-size:
-        clamp(
-            30px,
-            7vw,
-            46px
-        );
+```
+background: linear-gradient(
+    90deg,
+    #fff,
+    var(--blue),
+    var(--purple-light),
+    #fff
+);
 
-    font-weight: 900;
+background-size: 300%;
+color: transparent;
+-webkit-background-clip: text;
+background-clip: text;
 
-    letter-spacing: 2px;
+animation: logoMove 6s linear infinite;
+```
 
-    background:
-        linear-gradient(
-            90deg,
-            white,
-            #00d9ff,
-            #a855ff,
-            white
-        );
-
-    background-size: 300%;
-
-    color: transparent;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    animation:
-        logoMove 5s linear infinite;
 }
 
 .bio {
-    margin-top: 10px;
-
-    color: #888;
-
-    font-size: 15px;
+margin-top: 12px;
+color: var(--text-muted);
+font-size: 14px;
 }
 
-
 /* =========================================
-   SECTION TITLE
-   ========================================= */
+SECTION TITLE
+========================================= */
+
+.social-section {
+position: relative;
+}
 
 .section-title {
-    margin-bottom: 18px;
-
-    text-align: right;
+margin-bottom: 22px;
+padding-right: 16px;
+border-right: 3px solid var(--blue);
 }
 
 .section-title span {
-    color: #00d9ff;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
+color: var(--blue);
+font-family: Orbitron;
+font-size: 9px;
+letter-spacing: 4px;
 }
 
 .section-title h2 {
-    margin-top: 5px;
-
-    font-size: 22px;
+margin-top: 4px;
+font-size: 23px;
+font-weight: 800;
 }
 
-
 /* =========================================
-   LINKS
-   ========================================= */
+SOCIAL LINKS
+========================================= */
 
 .links {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 14px;
+display: flex;
+flex-direction: column;
+gap: 15px;
 }
 
 .link {
-    position: relative;
+position: relative;
+display: flex;
+align-items: center;
+min-height: 82px;
+padding: 13px 20px;
+color: white;
+text-decoration: none;
+border-radius: 20px;
+overflow: hidden;
 
-    display: flex;
+```
+background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.075),
+        rgba(255,255,255,.02)
+    );
 
-    align-items: center;
+border: 1px solid var(--border);
+backdrop-filter: blur(18px);
 
-    min-height: 78px;
+transform-style: preserve-3d;
 
-    padding: 12px 20px;
+transition:
+    border-color .3s,
+    box-shadow .3s,
+    background .3s;
+```
 
-    border-radius: 20px;
-
-    color: white;
-
-    text-decoration: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.075),
-            rgba(255,255,255,0.025)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(15px);
-
-    overflow: hidden;
-
-    transform-style: preserve-3d;
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
 }
 
 .link::before {
-    content: "";
+content: "";
+position: absolute;
+inset: 0;
+opacity: 0;
+background:
+radial-gradient(
+circle at var(--x, 50%) var(--y, 50%),
+rgba(0,217,255,.12),
+transparent 45%
+);
+transition: opacity .3s;
+}
 
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    width: 80%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.10),
-            transparent
-        );
-
-    transform: skewX(-25deg);
-
-    transition: 0.7s;
+.link::after {
+content: "";
+position: absolute;
+top: 0;
+left: -100%;
+width: 55%;
+height: 100%;
+background: linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.08),
+transparent
+);
+transform: skewX(-25deg);
+transition: .7s;
 }
 
 .link:hover::before {
-    left: 140%;
+opacity: 1;
+}
+
+.link:hover::after {
+left: 150%;
 }
 
 .link:hover {
-    border-color: #00d9ff;
+border-color: rgba(0,217,255,.55);
+background:
+linear-gradient(
+135deg,
+rgba(0,217,255,.08),
+rgba(123,0,255,.07)
+);
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,217,255,0.10),
-            rgba(123,0,255,0.07)
-        );
+```
+box-shadow:
+    0 18px 45px rgba(0,0,0,.4),
+    0 0 25px rgba(0,217,255,.08);
+```
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.45),
-        0 0 25px rgba(0,217,255,0.12);
 }
 
-
 /* =========================================
-   ICON
-   ========================================= */
+ICON
+========================================= */
 
 .icon-box {
-    width: 52px;
-    height: 52px;
+position: relative;
+width: 54px;
+height: 54px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+border-radius: 16px;
 
-    display: flex;
+```
+background: rgba(255,255,255,.055);
+border: 1px solid rgba(255,255,255,.09);
 
-    align-items: center;
-    justify-content: center;
+transition: .35s ease;
+```
 
-    flex-shrink: 0;
-
-    border-radius: 15px;
-
-    background:
-        rgba(255,255,255,0.06);
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
 }
 
 .icon-box img {
-    width: 34px;
-    height: 34px;
-
-    object-fit: contain;
-
-    transition:
-        transform 0.3s ease,
-        filter 0.3s ease;
+width: 33px;
+height: 33px;
+object-fit: contain;
+transition: .35s ease;
 }
 
 .link:hover .icon-box {
-    transform: scale(1.08);
-
-    box-shadow:
-        0 0 20px rgba(0,217,255,0.15);
+transform: scale(1.08) rotate(-3deg);
+box-shadow: 0 0 25px rgba(0,217,255,.12);
 }
 
 .link:hover .icon-box img {
-    transform:
-        scale(1.15)
-        rotate(-5deg);
-
-    filter:
-        drop-shadow(
-            0 0 8px #00d9ff
-        );
+transform: scale(1.12);
+filter: drop-shadow(0 0 8px rgba(0,217,255,.6));
 }
 
-
 /* =========================================
-   LINK TEXT
-   ========================================= */
+LINK TEXT
+========================================= */
 
 .link-text {
-    display: flex;
-
-    flex-direction: column;
-
-    flex: 1;
-
-    margin-right: 15px;
+position: relative;
+z-index: 2;
+display: flex;
+flex-direction: column;
+flex: 1;
+margin-right: 16px;
 }
 
 .link-text strong {
-    font-size: 17px;
+font-family: Orbitron, Cairo;
+font-size: 16px;
 }
 
 .link-text small {
-    margin-top: 4px;
-
-    color: #777;
-
-    font-size: 11px;
+margin-top: 5px;
+color: var(--text-muted);
+font-size: 11px;
 }
 
-
-/* =========================================
-   ARROW
-   ========================================= */
-
 .arrow {
-    color: #555;
-
-    font-size: 25px;
-
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
+position: relative;
+z-index: 2;
+color: #656575;
+font-size: 25px;
+transition: .3s;
 }
 
 .link:hover .arrow {
-    color: #00d9ff;
-
-    transform:
-        translateX(-8px);
+color: var(--blue);
+transform: translateX(-8px);
+text-shadow: 0 0 12px var(--blue);
 }
 
-
 /* =========================================
-   GAMING BANNER
-   ========================================= */
+GAMING BANNER
+========================================= */
 
 .gaming-banner {
-    position: relative;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 50px;
+padding: 35px;
+border-radius: 25px;
+overflow: hidden;
 
-    display: flex;
+```
+background:
+    linear-gradient(
+        135deg,
+        rgba(123,0,255,.16),
+        rgba(0,217,255,.07)
+    );
 
-    align-items: center;
+border: 1px solid rgba(255,255,255,.13);
 
-    justify-content: space-between;
+box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
+```
 
-    margin-top: 45px;
-
-    padding: 30px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(123,0,255,0.12),
-            rgba(0,217,255,0.07)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    overflow: hidden;
 }
 
 .gaming-banner::before {
-    content: "";
+content: "";
+position: absolute;
+inset: 0;
+background:
+linear-gradient(
+110deg,
+transparent 35%,
+rgba(255,255,255,.06),
+transparent 65%
+);
+transform: translateX(-100%);
+animation: bannerMove 5s infinite;
+}
 
-    position: absolute;
-
-    top: 0;
-    left: -100%;
-
-    width: 100%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.08),
-            transparent
-        );
-
-    animation:
-        bannerMove 4s linear infinite;
+.gaming-banner::after {
+content: "";
+position: absolute;
+width: 200px;
+height: 200px;
+left: -70px;
+bottom: -100px;
+border-radius: 50%;
+background: rgba(123,0,255,.25);
+filter: blur(60px);
 }
 
 @keyframes bannerMove {
-
-    to {
-        left: 100%;
-    }
+50%, 100% {
+transform: translateX(150%);
+}
 }
 
 .banner-label {
-    color: #00d9ff;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
+position: relative;
+z-index: 1;
+color: var(--blue);
+font-family: Orbitron;
+font-size: 10px;
+letter-spacing: 4px;
 }
 
-.banner-content h2 {
-    margin-top: 5px;
-
-    font-size: 28px;
+.gaming-banner h2 {
+position: relative;
+z-index: 1;
+margin-top: 7px;
+font-family: Orbitron;
+font-size: 29px;
 }
 
 .gaming-banner p {
-    margin-top: 6px;
-
-    color: #888;
-
-    font-size: 13px;
+position: relative;
+z-index: 1;
+margin-top: 8px;
+color: var(--text-muted);
+font-size: 13px;
 }
 
 .banner-icon {
-    font-size: 55px;
-
-    filter:
-        drop-shadow(
-            0 0 15px #7b00ff
-        );
-
-    animation:
-        controllerFloat 2s ease-in-out infinite alternate;
+position: relative;
+z-index: 1;
+font-size: 65px;
+filter: drop-shadow(0 0 20px rgba(123,0,255,.8));
+animation: controllerFloat 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes controllerFloat {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform:
-            translateY(-8px)
-            rotate(5deg);
-    }
+to {
+transform: translateY(-10px) rotate(6deg);
+}
 }
 
-
 /* =========================================
-   FOOTER
-   ========================================= */
+FOOTER
+========================================= */
 
 footer {
-    margin-top: 55px;
-
-    padding-top: 25px;
-
-    text-align: center;
-
-    border-top:
-        1px solid rgba(255,255,255,0.08);
-
-    color: #555;
-
-    font-size: 11px;
+position: relative;
+margin-top: 65px;
+padding-top: 30px;
+text-align: center;
+border-top: 1px solid rgba(255,255,255,.08);
+color: #5f6070;
+font-size: 11px;
 }
 
 .footer-logo {
-    margin-bottom: 8px;
+margin-bottom: 10px;
+font-family: Orbitron;
+font-size: 19px;
+font-weight: 800;
+letter-spacing: 4px;
 
-    color: #888;
+```
+background: linear-gradient(90deg, var(--blue), var(--purple-light));
+color: transparent;
+-webkit-background-clip: text;
+background-clip: text;
+```
 
-    font-size: 18px;
-
-    font-weight: bold;
-
-    letter-spacing: 3px;
 }
 
 footer span {
-    display: block;
-
-    margin-top: 7px;
-
-    color: #444;
+display: block;
+margin-top: 8px;
+color: #444555;
 }
-
 
 /* =========================================
-   MOBILE
-   ========================================= */
+RESPONSIVE
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    .welcome-box {
-        padding: 50px 20px;
-    }
-
-    .welcome-logo {
-        font-size: 43px;
-
-        letter-spacing: 2px;
-    }
-
-    .welcome-title {
-        font-size: 21px;
-    }
-
-    .welcome-text {
-        font-size: 14px;
-    }
-
-    .enter-btn {
-        width: 90%;
-    }
-
-    .container {
-        width: 90%;
-
-        padding-top: 110px;
-    }
-
-    .site-info {
-        top: 10px;
-        right: 10px;
-
-        font-size: 9px;
-
-        padding: 7px 10px;
-    }
-
-    .profile-img {
-        width: 135px;
-        height: 135px;
-    }
-
-    .name {
-        font-size: 30px;
-    }
-
-    .bio {
-        font-size: 13px;
-    }
-
-    .section-title h2 {
-        font-size: 19px;
-    }
-
-    .link {
-        min-height: 68px;
-
-        padding:
-            10px 15px;
-    }
-
-    .icon-box {
-        width: 45px;
-        height: 45px;
-    }
-
-    .icon-box img {
-        width: 29px;
-        height: 29px;
-    }
-
-    .link-text strong {
-        font-size: 15px;
-    }
-
-    .link-text small {
-        font-size: 10px;
-    }
-
-    .gaming-banner {
-        padding: 23px;
-    }
-
-    .banner-content h2 {
-        font-size: 22px;
-    }
-
-    .banner-icon {
-        font-size: 40px;
-    }
+```
+.mouse-glow {
+    display: none;
 }
-    .banner-icon {
-        font-size: 40px;
-    }
+
+.site-info {
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    transform: translateX(50%);
+    width: max-content;
+}
+
+.site-info > div {
+    font-size: 9px;
+    padding: 7px 10px;
+}
+
+.container {
+    width: 90%;
+    padding-top: 115px;
+}
+
+.welcome-box {
+    padding: 55px 20px;
+    border-radius: 25px;
+}
+
+.welcome-logo {
+    letter-spacing: 2px;
+}
+
+.welcome-small {
+    letter-spacing: 2px;
+    font-size: 8px;
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+}
+
+.name {
+    font-size: 29px;
+}
+
+.section-title h2 {
+    font-size: 20px;
+}
+
+.link {
+    min-height: 72px;
+    padding: 10px 14px;
+    border-radius: 17px;
+}
+
+.icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+}
+
+.icon-box img {
+    width: 29px;
+    height: 29px;
+}
+
+.link-text strong {
+    font-size: 14px;
+}
+
+.gaming-banner {
+    padding: 25px 20px;
+}
+
+.gaming-banner h2 {
+    font-size: 22px;
+}
+
+.banner-icon {
+    font-size: 45px;
+}
+```
+
+}
+
+@media (max-width: 400px) {
+
+```
+.site-info {
+    gap: 4px;
+}
+
+.site-info > div {
+    padding: 6px 7px;
+    font-size: 8px;
+}
+
+.welcome-title {
+    font-size: 17px;
+}
+
+.enter-btn {
+    width: 90%;
+}
+
+.gaming-banner {
+    padding: 20px 15px;
+}
+
+.banner-icon {
+    display: none;
+}
+```
+
 }
