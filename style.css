@@ -383,43 +383,81 @@ padding: 110px 0 55px;
 }
 
 /* =========================================
-SITE INFO
+   SITE INFO - PREMIUM CARDS
 ========================================= */
 
 .site-info {
-position: fixed;
-top: 18px;
-right: 20px;
-display: flex;
-gap: 8px;
-z-index: 20;
+    position: fixed;
+    top: 18px;
+    right: 20px;
+
+    display: flex;
+    gap: 8px;
+
+    z-index: 20;
 }
 
 .site-info > div {
-padding: 9px 14px;
-border-radius: 12px;
-font-size: 10px;
-color: #a1a1ad;
+    padding: 9px 14px;
 
-```
-background: rgba(10,10,18,.65);
-border: 1px solid rgba(255,255,255,.1);
-backdrop-filter: blur(15px);
+    border-radius: 12px;
 
-transition: .3s;
-```
+    font-size: 10px;
+    color: #a1a1ad;
 
+    background:
+        rgba(10, 10, 18, 0.65);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    backdrop-filter:
+        blur(15px);
+
+    transition:
+        0.3s ease;
 }
 
 .site-info > div:hover {
-border-color: rgba(0,217,255,.4);
-transform: translateY(2px);
+    border-color:
+        rgba(0, 217, 255, 0.4);
+
+    transform:
+        translateY(2px);
 }
 
 .site-info strong {
-color: var(--blue);
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 8px rgba(0, 217, 255, 0.5);
 }
 
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .site-info {
+        position: absolute;
+
+        top: 12px;
+        right: 50%;
+
+        transform:
+            translateX(50%);
+
+        width: max-content;
+    }
+
+    .site-info > div {
+        font-size: 9px;
+
+        padding:
+            7px 10px;
+    }
+
+}
 /* =========================================
 PROFILE
 ========================================= */
