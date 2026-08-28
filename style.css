@@ -1,6 +1,6 @@
 /* =========================================
    ARLI GAMES
-   ULTRA GAMING DESIGN
+   PREMIUM GAMING WEBSITE
    ========================================= */
 
 * {
@@ -23,33 +23,40 @@ body {
 
     background:
         radial-gradient(
-            circle at 20% 10%,
-            #7b00ff30,
+            circle at 15% 10%,
+            rgba(123, 0, 255, 0.25),
             transparent 30%
         ),
         radial-gradient(
-            circle at 80% 30%,
-            #00d9ff20,
+            circle at 85% 20%,
+            rgba(0, 217, 255, 0.18),
             transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255, 0, 204, 0.12),
+            transparent 35%
         ),
         #030306;
 }
 
 
 /* =========================================
-   PARTICLES CANVAS
+   PARTICLES
    ========================================= */
 
 #particles {
     position: fixed;
-    inset: 0;
+
+    top: 0;
+    left: 0;
 
     width: 100%;
     height: 100%;
 
     pointer-events: none;
 
-    z-index: -3;
+    z-index: 0;
 }
 
 
@@ -60,8 +67,8 @@ body {
 .mouse-glow {
     position: fixed;
 
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
 
     border-radius: 50%;
 
@@ -70,13 +77,13 @@ body {
     background:
         radial-gradient(
             circle,
-            #7b00ff18,
+            rgba(123, 0, 255, 0.12),
             transparent 70%
         );
 
     transform: translate(-50%, -50%);
 
-    z-index: -2;
+    z-index: 1;
 }
 
 
@@ -88,6 +95,7 @@ body::before {
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
@@ -105,14 +113,7 @@ body::before {
 
     background-size: 55px 55px;
 
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
-
-    z-index: -4;
+    z-index: 0;
 
     animation: gridMove 15s linear infinite;
 }
@@ -135,30 +136,38 @@ body::before {
 
 .welcome-screen {
     position: fixed;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
-
-    z-index: 9999;
 
     background:
         radial-gradient(
             circle at center,
-            #7b00ff35,
-            transparent 35%
+            rgba(123,0,255,0.35),
+            transparent 40%
         ),
         #030306;
 
+    z-index: 9999;
+
+    opacity: 1;
+
+    visibility: visible;
+
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
 
 .welcome-screen.hide {
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
@@ -171,9 +180,10 @@ body::before {
     position: relative;
 
     width: 90%;
-    max-width: 760px;
 
-    padding: 70px 35px;
+    max-width: 750px;
+
+    padding: 65px 30px;
 
     text-align: center;
 
@@ -192,13 +202,13 @@ body::before {
     backdrop-filter: blur(25px);
 
     box-shadow:
-        0 0 40px #7b00ff25,
-        0 0 120px #00d9ff12;
+        0 0 35px rgba(123,0,255,0.25),
+        0 0 100px rgba(0,217,255,0.08);
 
     overflow: hidden;
 
     animation:
-        welcomeIn 1s ease,
+        welcomeAppear 1s ease,
         floating 4s ease-in-out infinite alternate;
 }
 
@@ -206,7 +216,10 @@ body::before {
     content: "";
 
     position: absolute;
+
     inset: -2px;
+
+    border-radius: 32px;
 
     background:
         linear-gradient(
@@ -224,20 +237,28 @@ body::before {
 
     z-index: -1;
 
-    animation: borderFlow 5s linear infinite;
+    animation: borderMove 5s linear infinite;
 }
 
-@keyframes welcomeIn {
+@keyframes welcomeAppear {
 
     from {
         opacity: 0;
-        transform: scale(.75);
-        filter: blur(15px);
+
+        transform:
+            scale(0.75)
+            translateY(30px);
+
+        filter: blur(12px);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            scale(1)
+            translateY(0);
+
         filter: blur(0);
     }
 }
@@ -253,7 +274,7 @@ body::before {
     }
 }
 
-@keyframes borderFlow {
+@keyframes borderMove {
 
     from {
         background-position: 0%;
@@ -266,14 +287,15 @@ body::before {
 
 
 /* =========================================
-   WELCOME
+   WELCOME CONTENT
    ========================================= */
 
 .welcome-line {
     width: 100px;
+
     height: 4px;
 
-    margin: auto;
+    margin: 0 auto 25px;
 
     border-radius: 50px;
 
@@ -289,7 +311,8 @@ body::before {
         0 0 15px #7b00ff,
         0 0 35px #00d9ff;
 
-    animation: linePulse 2s infinite alternate;
+    animation:
+        linePulse 2s ease-in-out infinite alternate;
 }
 
 @keyframes linePulse {
@@ -304,27 +327,22 @@ body::before {
 }
 
 .welcome-small {
-
-    margin-top: 25px;
-
     color: #777;
 
     font-size: 11px;
 
     letter-spacing: 4px;
+
+    margin-bottom: 10px;
 }
 
 .welcome-title {
-
-    margin-top: 10px;
-
     color: #aaa;
 
-    font-size: 27px;
+    font-size: 26px;
 }
 
 .welcome-logo {
-
     margin-top: 5px;
 
     font-size:
@@ -355,11 +373,11 @@ body::before {
     background-clip: text;
 
     animation:
-        logoFlow 4s linear infinite,
+        logoMove 4s linear infinite,
         logoGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes logoFlow {
+@keyframes logoMove {
 
     from {
         background-position: 0%;
@@ -375,20 +393,19 @@ body::before {
     from {
         filter:
             drop-shadow(
-                0 0 5px #00d9ff20
+                0 0 5px rgba(0,217,255,0.2)
             );
     }
 
     to {
         filter:
             drop-shadow(
-                0 0 25px #7b00ff80
+                0 0 25px rgba(123,0,255,0.7)
             );
     }
 }
 
 .welcome-text {
-
     margin-top: 15px;
 
     color: #999;
@@ -402,13 +419,11 @@ body::before {
    ========================================= */
 
 .enter-btn {
-
     position: relative;
 
-    margin-top: 32px;
+    margin-top: 30px;
 
-    padding:
-        16px 45px;
+    padding: 16px 45px;
 
     border: none;
 
@@ -432,16 +447,15 @@ body::before {
     overflow: hidden;
 
     box-shadow:
-        0 0 20px #7b00ff70,
-        0 0 50px #00d9ff20;
+        0 0 20px rgba(123,0,255,0.6),
+        0 0 50px rgba(0,217,255,0.15);
 
     transition:
-        transform .3s,
-        box-shadow .3s;
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .enter-btn::before {
-
     content: "";
 
     position: absolute;
@@ -456,13 +470,13 @@ body::before {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.45),
+            rgba(255,255,255,0.45),
             transparent
         );
 
     transform: skewX(-25deg);
 
-    transition: .7s;
+    transition: 0.7s;
 }
 
 .enter-btn:hover::before {
@@ -470,41 +484,54 @@ body::before {
 }
 
 .enter-btn:hover {
-
     transform:
         translateY(-5px)
-        scale(1.06);
+        scale(1.05);
 
     box-shadow:
         0 0 30px #7b00ff,
-        0 0 70px #00d9ff55;
+        0 0 70px rgba(0,217,255,0.4);
 }
 
 .enter-btn:active {
-    transform: scale(.95);
+    transform: scale(0.95);
 }
 
 
 /* =========================================
-   MAIN
+   MAIN SITE
    ========================================= */
 
 .main-site {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
 
     opacity: 0;
 
-    transform: translateY(40px);
+    visibility: hidden;
+
+    transform: translateY(25px);
 
     transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0s linear 0.8s;
 }
 
 .main-site.show {
-
     opacity: 1;
 
+    visibility: visible;
+
     transform: translateY(0);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0s;
 }
 
 
@@ -513,7 +540,6 @@ body::before {
    ========================================= */
 
 .container {
-
     width: 92%;
 
     max-width: 820px;
@@ -530,21 +556,20 @@ body::before {
    ========================================= */
 
 .site-info {
-
     position: absolute;
 
-    top: 20px;
+    top: 15px;
     right: 20px;
 
-    padding: 12px 16px;
+    padding: 11px 15px;
 
     border-radius: 14px;
 
     background:
-        rgba(255,255,255,.05);
+        rgba(255,255,255,0.05);
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,0.12);
 
     backdrop-filter: blur(15px);
 
@@ -553,10 +578,15 @@ body::before {
     font-size: 11px;
 
     line-height: 1.8;
+
+    z-index: 5;
 }
 
 .site-info strong {
     color: #00d9ff;
+
+    text-shadow:
+        0 0 8px #00d9ff;
 }
 
 
@@ -565,14 +595,12 @@ body::before {
    ========================================= */
 
 .profile {
-
     text-align: center;
 
     margin-bottom: 55px;
 }
 
 .profile-ring {
-
     position: relative;
 
     display: inline-flex;
@@ -589,15 +617,16 @@ body::before {
             #7b00ff
         );
 
+    box-shadow:
+        0 0 25px rgba(123,0,255,0.7),
+        0 0 60px rgba(0,217,255,0.2);
+
     animation:
         ringRotate 4s linear infinite;
-
-    box-shadow:
-        0 0 25px #7b00ff70,
-        0 0 60px #00d9ff30;
 }
 
 .profile-img {
+    display: block;
 
     width: 155px;
     height: 155px;
@@ -608,8 +637,6 @@ body::before {
 
     border:
         5px solid #030306;
-
-    display: block;
 }
 
 @keyframes ringRotate {
@@ -621,47 +648,46 @@ body::before {
 
 
 /* =========================================
-   STATUS
+   ONLINE
    ========================================= */
 
-.status {
-
+.online-status {
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
     gap: 7px;
 
     margin-top: 18px;
 
-    color: #64ff9a;
+    color: #65ff9b;
 
     font-size: 11px;
 
     letter-spacing: 2px;
 }
 
-.status span {
-
+.online-status span {
     width: 7px;
     height: 7px;
 
     border-radius: 50%;
 
-    background: #64ff9a;
+    background: #65ff9b;
 
     box-shadow:
-        0 0 10px #64ff9a;
+        0 0 12px #65ff9b;
 
-    animation: statusPulse 1.5s infinite;
+    animation:
+        onlinePulse 1.5s infinite;
 }
 
-@keyframes statusPulse {
+@keyframes onlinePulse {
 
     50% {
-        opacity: .3;
+        opacity: 0.3;
     }
 }
 
@@ -671,7 +697,6 @@ body::before {
    ========================================= */
 
 .name {
-
     margin-top: 12px;
 
     font-size:
@@ -682,6 +707,8 @@ body::before {
         );
 
     font-weight: 900;
+
+    letter-spacing: 2px;
 
     background:
         linear-gradient(
@@ -700,11 +727,10 @@ body::before {
     background-clip: text;
 
     animation:
-        logoFlow 5s linear infinite;
+        logoMove 5s linear infinite;
 }
 
 .bio {
-
     margin-top: 10px;
 
     color: #888;
@@ -718,14 +744,12 @@ body::before {
    ========================================= */
 
 .section-title {
-
     margin-bottom: 18px;
 
     text-align: right;
 }
 
 .section-title span {
-
     color: #00d9ff;
 
     font-size: 10px;
@@ -734,7 +758,6 @@ body::before {
 }
 
 .section-title h2 {
-
     margin-top: 5px;
 
     font-size: 22px;
@@ -746,7 +769,6 @@ body::before {
    ========================================= */
 
 .links {
-
     display: flex;
 
     flex-direction: column;
@@ -755,7 +777,6 @@ body::before {
 }
 
 .link {
-
     position: relative;
 
     display: flex;
@@ -764,8 +785,7 @@ body::before {
 
     min-height: 78px;
 
-    padding:
-        12px 20px;
+    padding: 12px 20px;
 
     border-radius: 20px;
 
@@ -776,12 +796,12 @@ body::before {
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,0.075),
+            rgba(255,255,255,0.025)
         );
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,0.12);
 
     backdrop-filter: blur(15px);
 
@@ -790,45 +810,53 @@ body::before {
     transform-style: preserve-3d;
 
     transition:
-        transform .2s ease,
-        border .3s ease,
-        box-shadow .3s ease;
+        transform 0.2s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 .link::before {
-
     content: "";
 
     position: absolute;
 
-    width: 160px;
-    height: 160px;
+    top: 0;
+    left: -120%;
 
-    top: -100px;
-    left: -100px;
+    width: 80%;
+    height: 100%;
 
-    border-radius: 50%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.10),
+            transparent
+        );
 
-    background: #00d9ff;
+    transform: skewX(-25deg);
 
-    filter: blur(80px);
-
-    opacity: 0;
-
-    transition: .4s;
+    transition: 0.7s;
 }
 
 .link:hover::before {
-    opacity: .15;
+    left: 140%;
 }
 
 .link:hover {
+    border-color: #00d9ff;
 
-    border-color: #00d9ff80;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,217,255,0.10),
+            rgba(123,0,255,0.07)
+        );
 
     box-shadow:
-        0 20px 45px #00000050,
-        0 0 25px #00d9ff12;
+        0 15px 40px rgba(0,0,0,0.45),
+        0 0 25px rgba(0,217,255,0.12);
 }
 
 
@@ -836,8 +864,7 @@ body::before {
    ICON
    ========================================= */
 
-.link-icon-box {
-
+.icon-box {
     width: 52px;
     height: 52px;
 
@@ -846,32 +873,43 @@ body::before {
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 15px;
 
     background:
-        rgba(255,255,255,.06);
+        rgba(255,255,255,0.06);
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid rgba(255,255,255,0.1);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.link-icon {
-
+.icon-box img {
     width: 34px;
     height: 34px;
 
     object-fit: contain;
 
     transition:
-        transform .3s ease,
-        filter .3s ease;
+        transform 0.3s ease,
+        filter 0.3s ease;
 }
 
-.link:hover .link-icon {
+.link:hover .icon-box {
+    transform: scale(1.08);
 
+    box-shadow:
+        0 0 20px rgba(0,217,255,0.15);
+}
+
+.link:hover .icon-box img {
     transform:
-        scale(1.18)
-        rotate(-6deg);
+        scale(1.15)
+        rotate(-5deg);
 
     filter:
         drop-shadow(
@@ -881,27 +919,24 @@ body::before {
 
 
 /* =========================================
-   LINK CONTENT
+   LINK TEXT
    ========================================= */
 
-.link-content {
-
+.link-text {
     display: flex;
 
     flex-direction: column;
 
-    margin-right: 15px;
-
     flex: 1;
+
+    margin-right: 15px;
 }
 
-.link-content strong {
-
+.link-text strong {
     font-size: 17px;
 }
 
-.link-content small {
-
+.link-text small {
     margin-top: 4px;
 
     color: #777;
@@ -915,22 +950,20 @@ body::before {
    ========================================= */
 
 .arrow {
-
     color: #555;
 
-    font-size: 24px;
+    font-size: 25px;
 
     transition:
-        transform .3s,
-        color .3s;
+        transform 0.3s ease,
+        color 0.3s ease;
 }
 
 .link:hover .arrow {
-
     color: #00d9ff;
 
     transform:
-        translateX(-7px);
+        translateX(-8px);
 }
 
 
@@ -939,7 +972,6 @@ body::before {
    ========================================= */
 
 .gaming-banner {
-
     position: relative;
 
     display: flex;
@@ -950,57 +982,54 @@ body::before {
 
     margin-top: 45px;
 
-    padding:
-        30px;
+    padding: 30px;
 
     border-radius: 25px;
 
     background:
         linear-gradient(
             135deg,
-            #7b00ff20,
-            #00d9ff12
+            rgba(123,0,255,0.12),
+            rgba(0,217,255,0.07)
         );
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,0.12);
 
     overflow: hidden;
 }
 
 .gaming-banner::before {
-
     content: "";
 
     position: absolute;
 
-    inset: 0;
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            #ffffff08,
+            rgba(255,255,255,0.08),
             transparent
         );
 
-    transform:
-        translateX(-100%);
-
     animation:
-        bannerLight 4s infinite;
+        bannerMove 4s linear infinite;
 }
 
-@keyframes bannerLight {
+@keyframes bannerMove {
 
-    50% {
-        transform:
-            translateX(100%);
+    to {
+        left: 100%;
     }
 }
 
-.banner-tag {
-
+.banner-label {
     color: #00d9ff;
 
     font-size: 10px;
@@ -1009,14 +1038,12 @@ body::before {
 }
 
 .banner-content h2 {
-
     margin-top: 5px;
 
     font-size: 28px;
 }
 
-.banner-content p {
-
+.gaming-banner p {
     margin-top: 6px;
 
     color: #888;
@@ -1025,7 +1052,6 @@ body::before {
 }
 
 .banner-icon {
-
     font-size: 55px;
 
     filter:
@@ -1039,6 +1065,10 @@ body::before {
 
 @keyframes controllerFloat {
 
+    from {
+        transform: translateY(0);
+    }
+
     to {
         transform:
             translateY(-8px)
@@ -1048,26 +1078,10 @@ body::before {
 
 
 /* =========================================
-   REVEAL
-   ========================================= */
-
-.reveal {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* =========================================
    FOOTER
    ========================================= */
 
 footer {
-
     margin-top: 55px;
 
     padding-top: 25px;
@@ -1075,7 +1089,7 @@ footer {
     text-align: center;
 
     border-top:
-        1px solid rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,0.08);
 
     color: #555;
 
@@ -1083,12 +1097,11 @@ footer {
 }
 
 .footer-logo {
-
     margin-bottom: 8px;
 
     color: #888;
 
-    font-size: 17px;
+    font-size: 18px;
 
     font-weight: bold;
 
@@ -1096,7 +1109,6 @@ footer {
 }
 
 footer span {
-
     display: block;
 
     margin-top: 7px;
@@ -1112,99 +1124,93 @@ footer span {
 @media (max-width: 600px) {
 
     .welcome-box {
-
-        padding:
-            50px 20px;
+        padding: 50px 20px;
     }
 
     .welcome-logo {
-
         font-size: 43px;
 
         letter-spacing: 2px;
     }
 
     .welcome-title {
-
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .welcome-text {
-
         font-size: 14px;
     }
 
     .enter-btn {
-
         width: 90%;
     }
 
     .container {
-
         width: 90%;
 
-        padding-top: 115px;
+        padding-top: 110px;
     }
 
     .site-info {
-
         top: 10px;
         right: 10px;
 
         font-size: 9px;
+
+        padding: 7px 10px;
     }
 
     .profile-img {
-
         width: 135px;
         height: 135px;
     }
 
     .name {
-
         font-size: 30px;
     }
 
     .bio {
-
         font-size: 13px;
     }
 
-    .link {
-
-        min-height: 68px;
+    .section-title h2 {
+        font-size: 19px;
     }
 
-    .link-icon-box {
+    .link {
+        min-height: 68px;
 
+        padding:
+            10px 15px;
+    }
+
+    .icon-box {
         width: 45px;
         height: 45px;
     }
 
-    .link-icon {
-
-        width: 30px;
-        height: 30px;
+    .icon-box img {
+        width: 29px;
+        height: 29px;
     }
 
-    .link-content strong {
-
+    .link-text strong {
         font-size: 15px;
     }
 
-    .gaming-banner {
+    .link-text small {
+        font-size: 10px;
+    }
 
+    .gaming-banner {
         padding: 23px;
     }
 
     .banner-content h2 {
-
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .banner-icon {
-
         font-size: 40px;
     }
 }
-
