@@ -717,3 +717,520 @@ footer {
     height: 45px;
     object-fit: contain;
 }
+```css
+/* ================================= */
+/* إضافات ARLI GAMES */
+/* ================================= */
+
+
+/* زر الاشتراك */
+
+.subscribe-btn {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 13px 30px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #ff0033,
+        #ff1744
+    );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 15px #ff003355;
+
+    transition: 0.3s;
+}
+
+
+.subscribe-btn:hover {
+
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 20px #ff0033,
+        0 0 40px #ff003355;
+}
+
+
+/* شريط الأخبار */
+
+.news-bar {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    padding: 14px 18px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 0 20px #7b00ff22;
+}
+
+
+.news-bar span {
+
+    color: #aaa;
+
+    animation: newsMove 8s linear infinite;
+}
+
+
+@keyframes newsMove {
+
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+
+
+/* العناوين */
+
+.latest-video h2,
+.games-section h2 {
+
+    margin-bottom: 18px;
+
+    font-size: 27px;
+
+    text-shadow:
+        0 0 10px #7b00ff;
+}
+
+
+/* آخر فيديو */
+
+.latest-video {
+
+    margin-bottom: 35px;
+}
+
+
+.video-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(15px);
+
+    transition: 0.3s;
+}
+
+
+.video-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 25px #00d9ff33;
+}
+
+
+.video-placeholder {
+
+    min-width: 150px;
+
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7b00ff,
+            #00aaff
+        );
+
+    font-size: 45px;
+
+    box-shadow:
+        0 0 25px #7b00ff55;
+}
+
+
+.video-content h3 {
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+.video-content p {
+
+    color: #aaa;
+
+    margin-bottom: 15px;
+}
+
+
+.watch-btn {
+
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    background: #ffffff12;
+
+    border: 1px solid #ffffff22;
+
+    color: white;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+.watch-btn:hover {
+
+    background: #00d9ff22;
+
+    border-color: #00d9ff;
+}
+
+
+/* قسم الألعاب */
+
+.games-section {
+
+    margin-bottom: 35px;
+}
+
+
+.games-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.game-card {
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    transition: 0.3s;
+}
+
+
+.game-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+    border-color: #a855ff;
+
+    box-shadow:
+        0 0 25px #7b00ff44;
+}
+
+
+.game-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+
+.game-card h3 {
+
+    font-size: 20px;
+
+    margin-bottom: 7px;
+}
+
+
+.game-card p {
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+
+/* Discord */
+
+.discord-section {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5865f222,
+            #7b00ff22
+        );
+
+    border: 1px solid #5865f255;
+
+    box-shadow:
+        0 0 25px #5865f522;
+}
+
+
+.discord-icon {
+
+    font-size: 42px;
+}
+
+
+.discord-section h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+.discord-section p {
+
+    color: #aaa;
+
+    font-size: 14px;
+}
+
+
+.discord-btn {
+
+    margin-right: auto;
+
+    padding: 11px 20px;
+
+    border-radius: 11px;
+
+    background: #5865f2;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.discord-btn:hover {
+
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 20px #5865f2;
+}
+
+
+/* صور السوشيال */
+
+.link-icon {
+
+    position: absolute;
+
+    right: 15px;
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: contain;
+}
+
+
+/* ظهور العناصر */
+
+.latest-video,
+.games-section,
+.discord-section,
+.links,
+.news-bar {
+
+    animation: sectionAppear 0.8s ease both;
+}
+
+
+@keyframes sectionAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* خلفية Gaming متحركة */
+
+body {
+
+    background-size:
+        200% 200%;
+
+    animation:
+        backgroundMove 12s ease infinite;
+}
+
+
+@keyframes backgroundMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* الموبايل */
+
+@media (max-width: 600px) {
+
+    .news-bar {
+
+        font-size: 12px;
+
+    }
+
+
+    .video-card {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .video-placeholder {
+
+        width: 100%;
+
+        height: 130px;
+
+    }
+
+
+    .games-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .discord-section {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .discord-btn {
+
+        margin-right: 0;
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+}
+
+
