@@ -1,36 +1,64 @@
 /* =========================================
-   ARLI GAMES
-   FINAL JAVASCRIPT
-   ========================================= */
+ARLI GAMES
+PREMIUM GAMING JAVASCRIPT
+========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================
-       ENTER BUTTON
-       ===================================== */
+```
+/* =====================================
+   LOADER
+   ===================================== */
 
-    const enterBtn = document.getElementById("enterBtn");
-    const welcomeScreen = document.getElementById("welcomeScreen");
-    const mainSite = document.getElementById("mainSite");
+const loader = document.getElementById("loader");
 
-    enterBtn.addEventListener("click", function () {
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        if (loader) {
+            loader.classList.add("loader-hide");
+        }
+
+    }, 1800);
+
+});
+
+
+/* =====================================
+   ENTER BUTTON
+   ===================================== */
+
+const enterBtn = document.getElementById("enterBtn");
+const welcomeScreen = document.getElementById("welcomeScreen");
+const mainSite = document.getElementById("mainSite");
+
+if (enterBtn) {
+
+    enterBtn.addEventListener("click", () => {
 
         welcomeScreen.classList.add("hide");
 
-        setTimeout(function () {
-
+        setTimeout(() => {
             mainSite.classList.add("show");
-
-        }, 100);
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }, 300);
 
     });
 
+}
 
-    /* =====================================
-       MOUSE GLOW
-       ===================================== */
 
-    const mouseGlow = document.querySelector(".mouse-glow");
+/* =====================================
+   MOUSE GLOW
+   ===================================== */
+
+const mouseGlow = document.querySelector(".mouse-glow");
+
+if (mouseGlow && window.innerWidth > 768) {
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -38,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let glowX = mouseX;
     let glowY = mouseY;
 
-    document.addEventListener("mousemove", function (event) {
+    document.addEventListener("mousemove", (event) => {
 
         mouseX = event.clientX;
         mouseY = event.clientY;
@@ -54,22 +82,29 @@ document.addEventListener("DOMContentLoaded", function () {
         mouseGlow.style.top = glowY + "px";
 
         requestAnimationFrame(updateGlow);
+
     }
 
     updateGlow();
 
+}
 
-    /* =====================================
-       3D LINKS
-       ===================================== */
 
-    const links = document.querySelectorAll(".link");
+/* =====================================
+   3D HOVER EFFECT
+   ===================================== */
 
-    links.forEach(function (link) {
+const tiltElements = document.querySelectorAll(
+    ".link, .game-card, .stat-card, .info-card"
+);
 
-        link.addEventListener("mousemove", function (event) {
+if (window.innerWidth > 768) {
 
-            const rect = link.getBoundingClientRect();
+    tiltElements.forEach((element) => {
+
+        element.addEventListener("mousemove", (event) => {
+
+            const rect = element.getBoundingClientRect();
 
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
@@ -77,58 +112,168 @@ document.addEventListener("DOMContentLoaded", function () {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = (y - centerY) / 18;
-            const rotateY = (centerX - x) / 18;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
 
-            link.style.transform =
-                "perspective(800px) " +
-                "rotateX(" + rotateX + "deg) " +
-                "rotateY(" + rotateY + "deg) " +
-                "scale(1.02)";
+            element.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)
+                 scale(1.02)`;
+
         });
 
 
-        link.addEventListener("mouseleave", function () {
+        element.addEventListener("mouseleave", () => {
 
-            link.style.transform =
-                "perspective(800px) " +
-                "rotateX(0deg) " +
-                "rotateY(0deg) " +
-                "scale(1)";
+            element.style.transform = "";
 
         });
 
     });
 
+}
 
-    /* =====================================
-       PARTICLES
-       ===================================== */
 
-    const canvas = document.getElementById("particles");
+/* =====================================
+   SCROLL REVEAL
+   ===================================== */
 
-    const ctx = canvas.getContext("2d");
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const revealObserver =
+    new IntersectionObserver((entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("active");
+
+                revealObserver.unobserve(entry.target);
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+
+revealElements.forEach((element) => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =====================================
+   COUNTER ANIMATION
+   ===================================== */
+
+const counters =
+    document.querySelectorAll(".counter");
+
+const counterObserver =
+    new IntersectionObserver((entries) => {
+
+        entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) return;
+
+            const counter = entry.target;
+
+            const target =
+                Number(counter.dataset.target);
+
+            let count = 0;
+
+            const speed = 40;
+
+            const updateCounter = () => {
+
+                if (count < target) {
+
+                    count++;
+
+                    counter.textContent = count;
+
+                    setTimeout(
+                        updateCounter,
+                        speed
+                    );
+
+                } else {
+
+                    counter.textContent =
+                        target + "+";
+
+                }
+
+            };
+
+            updateCounter();
+
+            counterObserver.unobserve(counter);
+
+        });
+
+    }, {
+        threshold: 0.5
+    });
+
+
+counters.forEach((counter) => {
+
+    counterObserver.observe(counter);
+
+});
+
+
+/* =====================================
+   PARTICLES CANVAS
+   ===================================== */
+
+const canvas =
+    document.getElementById("particles");
+
+if (canvas) {
+
+    const ctx =
+        canvas.getContext("2d");
 
     let particles = [];
 
 
     function resizeCanvas() {
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width =
+            window.innerWidth;
+
+        canvas.height =
+            window.innerHeight;
 
     }
 
     resizeCanvas();
 
-    window.addEventListener("resize", function () {
 
-        resizeCanvas();
+    window.addEventListener(
+        "resize",
+        () => {
 
-        createParticles();
+            resizeCanvas();
 
-    });
+            createParticles();
 
+        }
+    );
+
+
+    /* CREATE PARTICLES */
 
     function createParticles() {
 
@@ -136,10 +281,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const amount =
             window.innerWidth <= 600
-                ? 35
-                : 75;
+                ? 30
+                : 65;
 
-        for (let i = 0; i < amount; i++) {
+
+        for (
+            let i = 0;
+            i < amount;
+            i++
+        ) {
 
             particles.push({
 
@@ -163,7 +313,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     0.35,
 
                 opacity:
-                    Math.random() * 0.6 + 0.1
+                    Math.random() *
+                    0.6 + 0.15
 
             });
 
@@ -175,9 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
     createParticles();
 
 
-    /* =====================================
-       PARTICLE ANIMATION
-       ===================================== */
+    /* PARTICLE ANIMATION */
 
     function animateParticles() {
 
@@ -189,59 +338,64 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        /* MOVE */
+        particles.forEach(
+            (particle) => {
 
-        particles.forEach(function (particle) {
+                particle.x +=
+                    particle.speedX;
 
-            particle.x += particle.speedX;
-            particle.y += particle.speedY;
+                particle.y +=
+                    particle.speedY;
 
 
-            if (
-                particle.x <= 0 ||
-                particle.x >= canvas.width
-            ) {
+                if (
+                    particle.x <= 0 ||
+                    particle.x >= canvas.width
+                ) {
 
-                particle.speedX *= -1;
+                    particle.speedX *= -1;
+
+                }
+
+
+                if (
+                    particle.y <= 0 ||
+                    particle.y >= canvas.height
+                ) {
+
+                    particle.speedY *= -1;
+
+                }
+
+
+                /* DRAW PARTICLE */
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    particle.x,
+                    particle.y,
+                    particle.size,
+                    0,
+                    Math.PI * 2
+                );
+
+
+                ctx.fillStyle =
+                    `rgba(
+                        120,
+                        220,
+                        255,
+                        ${particle.opacity}
+                    )`;
+
+                ctx.fill();
 
             }
+        );
 
 
-            if (
-                particle.y <= 0 ||
-                particle.y >= canvas.height
-            ) {
-
-                particle.speedY *= -1;
-
-            }
-
-
-            /* DRAW */
-
-            ctx.beginPath();
-
-            ctx.arc(
-                particle.x,
-                particle.y,
-                particle.size,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fillStyle =
-                "rgba(150,220,255," +
-                particle.opacity +
-                ")";
-
-            ctx.fill();
-
-        });
-
-
-        /* =================================
-           CONNECT PARTICLES
-        ================================= */
+        /* CONNECT PARTICLES */
 
         for (
             let i = 0;
@@ -270,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
-                if (distance < 115) {
+                if (distance < 120) {
 
                     ctx.beginPath();
 
@@ -284,10 +438,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         particles[j].y
                     );
 
+
                     ctx.strokeStyle =
-                        "rgba(120,180,255," +
-                        ((1 - distance / 115) * 0.13) +
-                        ")";
+                        `rgba(
+                            100,
+                            180,
+                            255,
+                            ${(
+                                1 -
+                                distance / 120
+                            ) * 0.12}
+                        )`;
 
                     ctx.lineWidth = 1;
 
@@ -308,5 +469,161 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     animateParticles();
+
+}
+
+
+/* =====================================
+   NAVBAR ACTIVE LINK
+   ===================================== */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        let current = "";
+
+        sections.forEach((section) => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY <
+                sectionTop + sectionHeight
+            ) {
+
+                current =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach((link) => {
+
+            link.classList.remove("active");
+
+            if (
+                link.getAttribute("href") ===
+                "#" + current
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+);
+
+
+/* =====================================
+   EASTER EGG
+   KONAMI CODE
+   ↑ ↑ ↓ ↓ ← → ← → B A
+   ===================================== */
+
+const secretCode = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a"
+];
+
+let secretIndex = 0;
+
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key.toLowerCase() ===
+            secretCode[secretIndex].toLowerCase()
+        ) {
+
+            secretIndex++;
+
+        } else {
+
+            secretIndex = 0;
+
+        }
+
+
+        if (
+            secretIndex ===
+            secretCode.length
+        ) {
+
+            activateEasterEgg();
+
+            secretIndex = 0;
+
+        }
+
+    }
+);
+
+
+function activateEasterEgg() {
+
+    document.body.classList.add(
+        "secret-mode"
+    );
+
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "secret-message";
+
+    message.innerHTML =
+        "🎮 SECRET MODE ACTIVATED! ⚡";
+
+
+    document.body.appendChild(
+        message
+    );
+
+
+    setTimeout(() => {
+
+        message.remove();
+
+        document.body.classList.remove(
+            "secret-mode"
+        );
+
+    }, 4000);
+
+}
+```
 
 });
