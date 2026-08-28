@@ -1,326 +1,614 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ARLI GAMES | Official</title>
+```
+<title>ARLI GAMES | Official Gaming Universe</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta name="description" content="ARLI GAMES - عالم الألعاب والمغامرات">
+
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
-    <!-- الخلفية -->
-    <canvas id="particles"></canvas>
-    <div class="mouse-glow"></div>
+```
+<!-- خلفية الجزيئات -->
+<canvas id="particles"></canvas>
+
+<!-- تأثير الماوس -->
+<div class="mouse-glow"></div>
+
+
+<!-- =========================
+     شاشة التحميل
+========================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-logo">ARLI GAMES</div>
+
+        <div class="loader-text">
+            INITIALIZING GAMING UNIVERSE...
+        </div>
+
+        <div class="loading-bar">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     شاشة الترحيب
+========================== -->
+
+<section class="welcome-screen" id="welcomeScreen">
+
+    <div class="welcome-box">
+
+        <div class="welcome-line"></div>
+
+        <div class="welcome-small">
+            OFFICIAL GAMING WEBSITE
+        </div>
+
+        <h1 class="welcome-title">
+            『 أهلاً بكم في عالم 』
+        </h1>
+
+        <h2 class="welcome-logo">
+            ARLI GAMES
+        </h2>
+
+        <p class="welcome-text">
+            🎮 عالم الألعاب يبدأ من هنا ⚡
+        </p>
+
+        <button class="enter-btn" id="enterBtn">
+            ✦ ENTER THE GAME ✦
+        </button>
+
+        <p class="scroll-hint">
+            CLICK TO START YOUR JOURNEY
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     الموقع الرئيسي
+========================== -->
+
+<main class="main-site" id="mainSite">
+
 
     <!-- =========================
-         شاشة الترحيب
+         NAVBAR
     ========================== -->
 
-    <section class="welcome-screen" id="welcomeScreen">
+    <nav class="navbar">
 
-        <div class="welcome-box">
+        <div class="nav-logo">
+            ARLI <span>GAMES</span>
+        </div>
 
-            <div class="welcome-line"></div>
+        <div class="nav-links">
 
-            <div class="welcome-small">
-                OFFICIAL GAMING WEBSITE
-            </div>
+            <a href="#home">الرئيسية</a>
+            <a href="#games">الألعاب</a>
+            <a href="#community">المجتمع</a>
+            <a href="#social">تواصل معنا</a>
 
-            <h1 class="welcome-title">
-                『 أهلاً بكم في موقع 』
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                🎮 OFFICIAL GAMING COMMUNITY
+            </span>
+
+            <h1>
+                ENTER THE WORLD OF
+                <span>ARLI GAMES</span>
             </h1>
 
-            <h2 class="welcome-logo">
-                ARLI GAMES
-            </h2>
-
-            <p class="welcome-text">
-                🎮 عالم الألعاب يبدأ من هنا ⚡
+            <p>
+                استعد لتجربة مختلفة مليئة بالألعاب والمغامرات والمجتمع القوي.
             </p>
 
-            <button class="enter-btn" id="enterBtn">
-                ✦ الدخول للموقع ✦
-            </button>
+            <div class="hero-buttons">
 
+                <a href="#games" class="primary-btn">
+                    🎮 EXPLORE GAMES
+                </a>
+
+                <a href="#social" class="secondary-btn">
+                    JOIN COMMUNITY
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-controller">
+            🎮
         </div>
 
     </section>
 
 
     <!-- =========================
-         الموقع الرئيسي
+         معلومات الموقع
     ========================== -->
 
-    <main class="main-site" id="mainSite">
+    <section class="site-info">
 
-        <!-- معلومات الموقع -->
+        <div class="info-card">
 
-        <div class="site-info">
-
-            <div>
-                <strong>صاحب الموقع:</strong>
-                أريس
-            </div>
+            <span>👑</span>
 
             <div>
-                <strong>مصمم الموقع:</strong>
-                أحمد المصري
+                <small>OWNER</small>
+                <strong>أريس</strong>
             </div>
 
         </div>
 
 
-        <div class="container">
+        <div class="info-card">
 
-            <!-- =========================
-                 PROFILE
-            ========================== -->
+            <span>💻</span>
 
-            <section class="profile">
+            <div>
+                <small>DESIGNER</small>
+                <strong>أحمد المصري</strong>
+            </div>
 
-                <div class="profile-ring">
+        </div>
 
-                    <img
-                        src="profile.png"
-                        class="profile-img"
-                        alt="ARLI GAMES">
+    </section>
 
-                </div>
 
-                <div class="online-status">
-                    <span></span>
-                    ONLINE
-                </div>
+    <div class="container">
 
-                <h1 class="name">
-                    『 ARLI GAMES 』
-                </h1>
 
-                <p class="bio">
-                    🎮 Roblox | Minecraft | And Other Games ⚡
-                </p>
+        <!-- =========================
+             PROFILE
+        ========================== -->
 
-            </section>
+        <section class="profile reveal">
 
+            <div class="profile-ring">
 
-            <!-- =========================
-                 SOCIAL
-            ========================== -->
+                <img src="profile.png"
+                    class="profile-img"
+                    alt="ARLI GAMES">
 
-            <section class="social-section">
+            </div>
 
-                <div class="section-title">
+            <div class="online-status">
 
-                    <span>
-                        CONNECT WITH US
-                    </span>
+                <span></span>
 
-                    <h2>
-                       جميع روابط ARLI GAMES
-                    </h2>
+                ONLINE
 
-                </div>
+            </div>
 
 
-                <div class="links">
+            <h1 class="name">
+                『 ARLI GAMES 』
+            </h1>
 
-                    <!-- YouTube -->
 
-                    <a
-                        href="https://youtube.com/@arli3320"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="link">
+            <p class="bio">
+                🎮 Roblox | Minecraft | And Other Games ⚡
+            </p>
 
-                        <div class="icon-box">
-                            <img
-                                src="youtube.png"
-                                alt="YouTube">
-                        </div>
+        </section>
 
-                        <div class="link-text">
 
-                            <strong>
-                                YouTube
-                            </strong>
+        <!-- =========================
+             STATS
+        ========================== -->
 
-                            <small>
-                                شاهد أحدث الفيديوهات
-                            </small>
+        <section class="stats reveal">
 
-                        </div>
+            <div class="stat-card">
 
-                        <div class="arrow">
-                            ←
-                        </div>
+                <h2 class="counter" data-target="4">0</h2>
 
-                    </a>
+                <p>SOCIAL PLATFORMS</p>
 
+            </div>
 
-                    <!-- Discord -->
 
-                    <a
-                        href="https://discord.gg/tmbV9aR7C"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="link">
+            <div class="stat-card">
 
-                        <div class="icon-box">
-                            <img
-                                src="discord.png"
-                                alt="Discord">
-                        </div>
+                <h2>∞</h2>
 
-                        <div class="link-text">
+                <p>GAMING ADVENTURES</p>
 
-                            <strong>
-                                Discord
-                            </strong>
+            </div>
 
-                            <small>
-                                انضم إلى مجتمعنا
-                            </small>
 
-                        </div>
+            <div class="stat-card">
 
-                        <div class="arrow">
-                            ←
-                        </div>
+                <h2>24/7</h2>
 
-                    </a>
+                <p>COMMUNITY ONLINE</p>
 
+            </div>
 
-                    <!-- Instagram -->
+        </section>
 
-                    <a
-                        href="https://www.instagram.com/arli.games"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="link">
 
-                        <div class="icon-box">
-                            <img
-                                src="instagram.png"
-                                alt="Instagram">
-                        </div>
+        <!-- =========================
+             GAMES
+        ========================== -->
 
-                        <div class="link-text">
+        <section class="games-section reveal" id="games">
 
-                            <strong>
-                                Instagram
-                            </strong>
 
-                            <small>
-                                تابعنا على Instagram
-                            </small>
+            <div class="section-title">
 
-                        </div>
+                <span>PLAY THE BEST</span>
 
-                        <div class="arrow">
-                            ←
-                        </div>
+                <h2>
+                    ألعابنا المفضلة
+                </h2>
 
-                    </a>
+            </div>
 
 
-                    <!-- TikTok -->
+            <div class="games-grid">
 
-                    <a
-                        href="https://www.tiktok.com/@arli.games"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="link">
 
-                        <div class="icon-box">
-                            <img
-                                src="tiktok.png"
-                                alt="TikTok">
-                        </div>
+                <!-- ROBLOX -->
 
-                        <div class="link-text">
+                <div class="game-card">
 
-                            <strong>
-                                TikTok
-                            </strong>
+                    <div class="game-icon">
+                        🎲
+                    </div>
 
-                            <small>
-                                شاهد المقاطع القصيرة
-                            </small>
-
-                        </div>
-
-                        <div class="arrow">
-                            ←
-                        </div>
-
-                    </a>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-                 GAMING BANNER
-            ========================== -->
-
-            <section class="gaming-banner">
-
-                <div>
-
-                    <span class="banner-label">
-                        LEVEL UP
-                    </span>
-
-                    <h2>
-                        READY TO PLAY?
-                    </h2>
+                    <h3>
+                        ROBLOX
+                    </h3>
 
                     <p>
-                        استعد لعالم مليء بالألعاب والمغامرات 🎮
+                        اكتشف عوالم لا نهائية ومغامرات جديدة.
                     </p>
 
+                    <button>
+                        PLAY NOW →
+                    </button>
+
                 </div>
 
-                <div class="banner-icon">
-                    🎮
+
+                <!-- MINECRAFT -->
+
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        ⛏️
+                    </div>
+
+                    <h3>
+                        MINECRAFT
+                    </h3>
+
+                    <p>
+                        ابنِ عالمك الخاص وابدأ مغامرتك.
+                    </p>
+
+                    <button>
+                        PLAY NOW →
+                    </button>
+
                 </div>
 
-            </section>
 
+                <!-- MORE -->
 
-            <!-- =========================
-                 FOOTER
-            ========================== -->
+                <div class="game-card mystery-card">
 
-            <footer>
+                    <div class="game-icon">
+                        🎮
+                    </div>
 
-                <div class="footer-logo">
-                    ARLI GAMES
+                    <h3>
+                        MORE GAMES
+                    </h3>
+
+                    <p>
+                        المزيد من الألعاب قادم قريبًا.
+                    </p>
+
+                    <button>
+                        COMING SOON
+                    </button>
+
                 </div>
 
-                <p>
-                    © 2026 ARLI GAMES — All Rights Reserved
-                </p>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMMUNITY
+        ========================== -->
+
+        <section class="community reveal" id="community">
+
+            <div class="community-content">
 
                 <span>
-                    Designed with ⚡ by Ahmed
+                    JOIN THE ARLI UNIVERSE
                 </span>
 
-            </footer>
+                <h2>
+                    كن جزءًا من مجتمعنا 🎮
+                </h2>
 
-        </div>
+                <p>
+                    انضم للاعبين، تابع المحتوى، وشارك مغامراتك معنا.
+                </p>
 
-    </main>
+
+                <a href="#social" class="primary-btn">
+
+                    JOIN NOW ⚡
+
+                </a>
+
+            </div>
 
 
-    <!-- JavaScript -->
+            <div class="community-decoration">
 
-    <script src="./script.js"></script>
+                <span>🎮</span>
+                <span>⚡</span>
+                <span>🔥</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SOCIAL
+        ========================== -->
+
+        <section class="social-section reveal" id="social">
+
+            <div class="section-title">
+
+                <span>
+                    CONNECT WITH US
+                </span>
+
+                <h2>
+                    جميع روابط ARLI GAMES
+                </h2>
+
+            </div>
+
+
+            <div class="links">
+
+
+                <!-- YouTube -->
+
+                <a href="https://youtube.com/@arli3320"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link">
+
+                    <div class="icon-box">
+
+                        <img src="youtube.png"
+                            alt="YouTube">
+
+                    </div>
+
+
+                    <div class="link-text">
+
+                        <strong>YouTube</strong>
+
+                        <small>
+                            شاهد أحدث الفيديوهات
+                        </small>
+
+                    </div>
+
+
+                    <div class="arrow">←</div>
+
+                </a>
+
+
+                <!-- Discord -->
+
+                <a href="https://discord.gg/tmbV9aR7C"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link">
+
+                    <div class="icon-box">
+
+                        <img src="discord.png"
+                            alt="Discord">
+
+                    </div>
+
+
+                    <div class="link-text">
+
+                        <strong>Discord</strong>
+
+                        <small>
+                            انضم إلى مجتمعنا
+                        </small>
+
+                    </div>
+
+
+                    <div class="arrow">←</div>
+
+                </a>
+
+
+                <!-- Instagram -->
+
+                <a href="https://www.instagram.com/arli.games"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link">
+
+                    <div class="icon-box">
+
+                        <img src="instagram.png"
+                            alt="Instagram">
+
+                    </div>
+
+
+                    <div class="link-text">
+
+                        <strong>Instagram</strong>
+
+                        <small>
+                            تابعنا على Instagram
+                        </small>
+
+                    </div>
+
+
+                    <div class="arrow">←</div>
+
+                </a>
+
+
+                <!-- TikTok -->
+
+                <a href="https://www.tiktok.com/@arli.games"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link">
+
+                    <div class="icon-box">
+
+                        <img src="tiktok.png"
+                            alt="TikTok">
+
+                    </div>
+
+
+                    <div class="link-text">
+
+                        <strong>TikTok</strong>
+
+                        <small>
+                            شاهد المقاطع القصيرة
+                        </small>
+
+                    </div>
+
+
+                    <div class="arrow">←</div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GAMING BANNER
+        ========================== -->
+
+        <section class="gaming-banner reveal">
+
+            <div>
+
+                <span class="banner-label">
+                    LEVEL UP
+                </span>
+
+                <h2>
+                    READY TO PLAY?
+                </h2>
+
+                <p>
+                    استعد لعالم مليء بالألعاب والمغامرات 🎮
+                </p>
+
+            </div>
+
+
+            <div class="banner-icon">
+                🎮
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <div class="footer-logo">
+                ARLI <span>GAMES</span>
+            </div>
+
+            <p>
+                © 2026 ARLI GAMES — All Rights Reserved
+            </p>
+
+            <span>
+                Designed with ⚡ by Ahmed
+            </span>
+
+        </footer>
+
+
+    </div>
+
+</main>
+
+
+<script src="./script.js"></script>
+```
 
 </body>
 
