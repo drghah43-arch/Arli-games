@@ -1032,9 +1032,8 @@ RESPONSIVE
 .banner-icon {
     display: none;
 }
-```
 
-}
-.enter-btn {
+.enter-btn,
+.enter-btn * {
     color: #000000 !important;
 }
