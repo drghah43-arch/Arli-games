@@ -43,7 +43,9 @@
                 🎮 عالم الألعاب يبدأ من هنا ⚡
             </p>
 
-           <button class="enter-btn" id="enterBtn">
+           <button
+    class="enter-btn"
+    onclick="enterWebsite()">
     <span>✦ الدخول للموقع ✦</span>
 </button>
         </div>
@@ -273,6 +275,18 @@
 
 
   <script src="./script.js"></script>
+<script>
+function enterWebsite() {
+    document.getElementById("welcomeScreen").classList.add("hide");
+
+    setTimeout(function() {
+        document.getElementById("mainSite").classList.add("show");
+    }, 400);
+}
+</script>
+
+<script src="./script.js"></script>
+
 
 </body>
 
