@@ -1,226 +1,169 @@
 /* =========================================
-   ARLI GAMES - SCRIPT
+   ARLI GAMES
+   FINAL JAVASCRIPT
    ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================
-       ENTER WEBSITE
-    ========================= */
+    /* =====================================
+       ENTER BUTTON
+       ===================================== */
 
     const enterBtn = document.getElementById("enterBtn");
     const welcomeScreen = document.getElementById("welcomeScreen");
     const mainSite = document.getElementById("mainSite");
 
-    if (enterBtn && welcomeScreen && mainSite) {
+    enterBtn.addEventListener("click", function () {
 
-        enterBtn.addEventListener("click", () => {
+        welcomeScreen.classList.add("hide");
 
-            welcomeScreen.classList.add("hide");
+        setTimeout(function () {
 
-            setTimeout(() => {
-                mainSite.classList.add("show");
-            }, 300);
+            mainSite.classList.add("show");
 
-            setTimeout(() => {
-                revealElements();
-            }, 500);
-
-        });
-
-    }
-
-
-    /* =========================
-       REVEAL ELEMENTS
-    ========================= */
-
-    function revealElements() {
-
-        const elements =
-            document.querySelectorAll(".reveal");
-
-        elements.forEach((element, index) => {
-
-            setTimeout(() => {
-                element.classList.add("active");
-            }, index * 180);
-
-        });
-
-    }
-
-
-    /* =========================
-       MOUSE GLOW
-    ========================= */
-
-    const mouseGlow =
-        document.querySelector(".mouse-glow");
-
-    if (mouseGlow) {
-
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-
-        let glowX = mouseX;
-        let glowY = mouseY;
-
-        document.addEventListener("mousemove", (event) => {
-
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-
-        });
-
-        function animateGlow() {
-
-            glowX +=
-                (mouseX - glowX) * 0.08;
-
-            glowY +=
-                (mouseY - glowY) * 0.08;
-
-            mouseGlow.style.left =
-                glowX + "px";
-
-            mouseGlow.style.top =
-                glowY + "px";
-
-            requestAnimationFrame(
-                animateGlow
-            );
-        }
-
-        animateGlow();
-
-    }
-
-
-    /* =========================
-       3D LINK EFFECT
-    ========================= */
-
-    const links =
-        document.querySelectorAll(".link");
-
-    links.forEach((link) => {
-
-        link.addEventListener(
-            "mousemove",
-            (event) => {
-
-                const rect =
-                    link.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const rotateX =
-                    (y - rect.height / 2) / 18;
-
-                const rotateY =
-                    (rect.width / 2 - x) / 18;
-
-                link.style.transform =
-                    `perspective(800px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     scale(1.02)`;
-
-            }
-        );
-
-        link.addEventListener(
-            "mouseleave",
-            () => {
-
-                link.style.transform =
-                    "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
-
-            }
-        );
+        }, 100);
 
     });
 
 
-    /* =========================
+    /* =====================================
+       MOUSE GLOW
+       ===================================== */
+
+    const mouseGlow = document.querySelector(".mouse-glow");
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let glowX = mouseX;
+    let glowY = mouseY;
+
+    document.addEventListener("mousemove", function (event) {
+
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+    });
+
+    function updateGlow() {
+
+        glowX += (mouseX - glowX) * 0.08;
+        glowY += (mouseY - glowY) * 0.08;
+
+        mouseGlow.style.left = glowX + "px";
+        mouseGlow.style.top = glowY + "px";
+
+        requestAnimationFrame(updateGlow);
+    }
+
+    updateGlow();
+
+
+    /* =====================================
+       3D LINKS
+       ===================================== */
+
+    const links = document.querySelectorAll(".link");
+
+    links.forEach(function (link) {
+
+        link.addEventListener("mousemove", function (event) {
+
+            const rect = link.getBoundingClientRect();
+
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 18;
+            const rotateY = (centerX - x) / 18;
+
+            link.style.transform =
+                "perspective(800px) " +
+                "rotateX(" + rotateX + "deg) " +
+                "rotateY(" + rotateY + "deg) " +
+                "scale(1.02)";
+        });
+
+
+        link.addEventListener("mouseleave", function () {
+
+            link.style.transform =
+                "perspective(800px) " +
+                "rotateX(0deg) " +
+                "rotateY(0deg) " +
+                "scale(1)";
+
+        });
+
+    });
+
+
+    /* =====================================
        PARTICLES
-    ========================= */
+       ===================================== */
 
-    const canvas =
-        document.getElementById("particles");
+    const canvas = document.getElementById("particles");
 
-    if (!canvas) return;
-
-    const ctx =
-        canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
 
     let particles = [];
 
+
     function resizeCanvas() {
 
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
     }
 
     resizeCanvas();
 
-    window.addEventListener(
-        "resize",
-        resizeCanvas
-    );
+    window.addEventListener("resize", function () {
 
+        resizeCanvas();
 
-    /* CREATE PARTICLES */
+        createParticles();
+
+    });
+
 
     function createParticles() {
 
         particles = [];
 
-        const count =
-            window.innerWidth < 600
+        const amount =
+            window.innerWidth <= 600
                 ? 35
-                : 70;
+                : 75;
 
-        for (
-            let i = 0;
-            i < count;
-            i++
-        ) {
+        for (let i = 0; i < amount; i++) {
 
             particles.push({
 
                 x:
-                    Math.random()
-                    * canvas.width,
+                    Math.random() *
+                    canvas.width,
 
                 y:
-                    Math.random()
-                    * canvas.height,
+                    Math.random() *
+                    canvas.height,
 
                 size:
-                    Math.random()
-                    * 2 + 0.5,
+                    Math.random() * 2 + 0.5,
 
                 speedX:
-                    (Math.random() - 0.5)
-                    * 0.35,
+                    (Math.random() - 0.5) *
+                    0.35,
 
                 speedY:
-                    (Math.random() - 0.5)
-                    * 0.35,
+                    (Math.random() - 0.5) *
+                    0.35,
 
                 opacity:
-                    Math.random()
-                    * 0.5 + 0.1
+                    Math.random() * 0.6 + 0.1
 
             });
 
@@ -228,10 +171,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     createParticles();
 
 
-    /* DRAW */
+    /* =====================================
+       PARTICLE ANIMATION
+       ===================================== */
 
     function animateParticles() {
 
@@ -243,20 +189,17 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* MOVE + DRAW */
+        /* MOVE */
 
-        particles.forEach((particle) => {
+        particles.forEach(function (particle) {
 
-            particle.x +=
-                particle.speedX;
-
-            particle.y +=
-                particle.speedY;
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
 
 
             if (
-                particle.x < 0 ||
-                particle.x > canvas.width
+                particle.x <= 0 ||
+                particle.x >= canvas.width
             ) {
 
                 particle.speedX *= -1;
@@ -265,14 +208,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             if (
-                particle.y < 0 ||
-                particle.y > canvas.height
+                particle.y <= 0 ||
+                particle.y >= canvas.height
             ) {
 
                 particle.speedY *= -1;
 
             }
 
+
+            /* DRAW */
 
             ctx.beginPath();
 
@@ -285,14 +230,18 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             ctx.fillStyle =
-                `rgba(150,220,255,${particle.opacity})`;
+                "rgba(150,220,255," +
+                particle.opacity +
+                ")";
 
             ctx.fill();
 
         });
 
 
-        /* CONNECT */
+        /* =================================
+           CONNECT PARTICLES
+        ================================= */
 
         for (
             let i = 0;
@@ -321,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
 
-                if (distance < 110) {
+                if (distance < 115) {
 
                     ctx.beginPath();
 
@@ -336,9 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     ctx.strokeStyle =
-                        `rgba(120,180,255,${(
-                            1 - distance / 110
-                        ) * 0.12})`;
+                        "rgba(120,180,255," +
+                        ((1 - distance / 115) * 0.13) +
+                        ")";
 
                     ctx.lineWidth = 1;
 
@@ -357,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     animateParticles();
 
 });
-
