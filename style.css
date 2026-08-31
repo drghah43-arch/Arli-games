@@ -1040,7 +1040,7 @@ RESPONSIVE
     display: none;
 }
 
-.enter-btn,
-.enter-btn * {
+.enter-btn {
+    background: #ffffff !important;
     color: #000000 !important;
 }
