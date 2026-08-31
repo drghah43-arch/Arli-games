@@ -286,65 +286,33 @@ ENTER BUTTON
 ========================================= */
 
 .enter-btn {
-position: relative;
-margin-top: 32px;
-padding: 16px 48px;
-border: 1px solid rgba(255,255,255,.16);
-border-radius: 14px;
-color: white;
-font-family: "Cairo";
-font-size: 16px;
-font-weight: 700;
-cursor: pointer;
-overflow: hidden;
+    position: relative;
+    margin-top: 32px;
+    padding: 16px 48px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 14px;
+    color: #000 !important;
+    font-family: "Cairo";
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
 
-```
-background: linear-gradient(
-    135deg,
-    var(--purple),
-    #315cff,
-    var(--blue)
-);
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        #315cff,
+        var(--blue)
+    );
 
-background-size: 200%;
+    background-size: 200%;
 
-box-shadow:
-    0 10px 30px rgba(123,0,255,.35),
-    inset 0 1px rgba(255,255,255,.2);
+    box-shadow:
+        0 10px 30px rgba(123,0,255,.35),
+        inset 0 1px rgba(255,255,255,.2);
 
-transition: .35s ease;
-```
-
+    transition: .35s ease;
 }
-
-.enter-btn::before {
-content: "";
-position: absolute;
-top: -50%;
-left: -100%;
-width: 50%;
-height: 200%;
-transform: rotate(25deg);
-background: rgba(255,255,255,.25);
-transition: .7s;
-}
-
-.enter-btn:hover::before {
-left: 150%;
-}
-
-.enter-btn:hover {
-transform: translateY(-5px) scale(1.03);
-background-position: right;
-box-shadow:
-0 15px 40px rgba(123,0,255,.5),
-0 0 30px rgba(0,217,255,.15);
-}
-
-.enter-btn:active {
-transform: scale(.96);
-}
-
 /* =========================================
 MAIN SITE
 ========================================= */
@@ -1041,6 +1009,6 @@ RESPONSIVE
 }
 
 .enter-btn {
-    background: #ffffff !important;
     color: #000000 !important;
+    text-shadow: none !important;
 }
